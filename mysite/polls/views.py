@@ -6,23 +6,6 @@ from django.views import generic
 
 from .models import Choice, Question
 
-# Create your views here.
-
-# Function based views
-# def index(request):
-#     latest_question_list = Question.objects.all()
-#     return render(request, 'polls/index.html', {'latest_question_list': latest_question_list})
-
-# def detail(request, question_id):
-#     question = get_object_or_404(Question, pk=question_id)
-#     return render(request, 'polls/detail.html', {'question': question})
-
-# def results(request, question_id):
-#     question = get_object_or_404(Question, pk=question_id)
-#     return render(request, 'polls/results.html', {'question': question})
-
-# Class based views
-
 
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
@@ -34,7 +17,8 @@ class IndexView(generic.ListView):
 
 
 class DetailView(generic.DetailView):
-    ...
+    model = Question
+    template_name = 'polls/detail.html'
 
     def get_queryset(self):
         """
